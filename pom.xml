@@ -12,8 +12,22 @@
 	</properties>
 
 	<scm>
+		<connection>scm:git:https://github.com/mathieuherbert/dip-validation.git</connection>
+		<url>https://github.com/mathieuherbert/dip-validation</url>
+		<developerConnection>scm:git:https://github.com/mathieuherbert/dip-validation.git</developerConnection>
 	</scm>
-
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://nexusapp-sigma44.rhcloud.com/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://nexusapp-sigma44.rhcloud.com/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<dependencies>
 		<!-- Spring framework -->
 
@@ -96,6 +110,16 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseProfiles>releases</releaseProfiles>
 				</configuration>
 			</plugin>
 		</plugins>
